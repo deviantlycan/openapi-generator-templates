@@ -15,16 +15,36 @@ This template set relies on the additional properties listed in this table
 | useActuator  | Boolean   | Enables Actuator Health and Info           |
 | actuatorPath | String    | Sets path for Actuator (default: basePath) |
 
-**Note**: The default basePath for teh actuatorPath property is the basepath that is 
-defined in the OpenApi spec, not the literal word "basepath"
-
 ## Use
 ```
 openapi-generator generate \
-	-i openapi.yaml \
-	-o ./generated \
-	-g spring \
-	-t openapi-generator-templates/generator-templates/JavaSpring/spring-boot-lombok-actuator \
-	-p useActuator=true,useLombok=true,actuatorPath=/actuator
+-i openapi.yaml \
+-o ./generated \
+-g spring \
+-t ../openapi-generator-templates/generator-templates/JavaSpring/spring-boot-lombok-actuator \
+-p useActuator=true,useLombok=true,actuatorPath=/actuator
 ```
+
+## Notes
+The default basePath for teh actuatorPath property is the basepath that is 
+defined in the OpenApi spec, not the literal word "basepath"
+
+The Actuator Info endpoint is configured in the application.properties file to
+automatically use data from the info section of the OpenApi spec to return a response 
+like
+
+```
+{
+  "title": "Echo",
+  "description": "This is an echo service",
+  "version": "1.0.0",
+  "termsOfService": "https://api.antbytes.com/echo/files/tos.html",
+  "contact": {
+    "name": "Deviant Lycan",
+    "email": "deviantlycan@antbytes.com",
+    "url": "https://antbytes.com/devs/deviantlycan"
+  }
+}
+```
+
 
