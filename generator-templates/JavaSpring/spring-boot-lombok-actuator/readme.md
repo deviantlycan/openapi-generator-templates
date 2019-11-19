@@ -1,16 +1,22 @@
 Spring Boot with Lombok and Actuator
 =======================================
 
-These templates allow for use of Lombok in generated models and Actuator 
-Health and Info endpoint inclusion.
+## Overview
+This template set allow for use of Lombok in generated models and Actuator 
+Health and Info endpoint inclusion.  They are not enabled by default, but 
+are enabled with "additional-properties"
 
-This template set relies on the additional properties
+## Additional Properties
+This template set relies on the additional properties listed in this table
 
 | Name         | Data Type | Description                                |
 |--------------|-----------|--------------------------------------------|
 | useLombok    | Boolean   | Enables Lombok for models                  |
 | useActuator  | Boolean   | Enables Actuator Health and Info           |
 | actuatorPath | String    | Sets path for Actuator (default: basePath) |
+
+**Note**: The default basePath for teh actuatorPath property is the basepath that is 
+defined in the OpenApi spec, not the literal word "basepath"
 
 ## Use
 ```
