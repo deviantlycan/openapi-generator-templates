@@ -26,7 +26,7 @@ openapi-generator generate \
 ```
 
 ## Notes
-The default basePath for teh actuatorPath property is the basepath that is 
+The default basePath for the actuatorPath property is the basepath that is 
 defined in the OpenApi spec, not the literal word "basepath"
 
 The Actuator Info endpoint is configured in the application.properties file to
