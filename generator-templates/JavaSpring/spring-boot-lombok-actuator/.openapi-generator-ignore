@@ -1,0 +1,10 @@
+# Do not generate Actuator endpoints or models.
+
+# this is if the "useTags" option is set to true
+**/Actuator*.java
+
+# This is the default
+**/HealthApi.java
+**/HealthApiController.java
+**/InfoApi.java
+**/InfoApiController.java

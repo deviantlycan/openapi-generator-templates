@@ -25,6 +25,10 @@ openapi-generator generate \
 -p useActuator=true,useLombok=true,actuatorPath=/actuator
 ```
 
+## Other files
+* The openapi.yaml file in this directory defines an example service that only exposes the actuator endpoints.
+* The .openapi-generator-ignore in this directory can be used to NOT generate models and controllers for the actuator endpoints.
+
 ## Notes
 The default basePath for the actuatorPath property is the basepath that is 
 defined in the OpenApi spec, not the literal word "basepath"
