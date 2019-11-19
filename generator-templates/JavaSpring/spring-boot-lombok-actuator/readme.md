@@ -23,7 +23,7 @@ openapi-generator generate \
 -i openapi.yaml \
 -o ./generated \
 -g spring \
--t openapi-generator-templates/generator-templates/JavaSpring/spring-boot-lombok-actuator \
+-t generator-templates/JavaSpring/spring-boot-lombok-actuator \
 -p useActuator=true,useLombok=true,actuatorPath=/actuator
 ```
 
