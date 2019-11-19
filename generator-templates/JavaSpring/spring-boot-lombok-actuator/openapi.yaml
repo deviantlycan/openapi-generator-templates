@@ -1,0 +1,172 @@
+swagger: "2.0"
+
+info:
+  title: "Actuator Demo"
+  description: |-
+    This example service only exposes actuator endpoints as an example
+  version: 1.0.0
+  termsOfService: https://github.com/deviantlycan/openapi-generator-templates
+  contact:
+    name: Deviant Lycan
+    email: deviantlycan@antbytes.com
+    url: http://deviantlycan.com
+
+################################################################################
+## Global API Configuration
+################################################################################
+host: localhost:8080
+
+schemes:
+  - http
+  - https
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+################################################################################
+## Paths
+################################################################################
+
+tags:
+  - name: Actuator
+    description: Actuator requests (should not be generated)
+    # Actuator tagged request code generation is blocked by .openapi-generator-ignore
+
+# Sets the default path prefix for all paths
+basePath: /actuator-demo/v1
+
+paths:
+  /health:
+    get:
+      tags:
+        - Actuator
+      summary: Health Check
+      description: Health Check endpoint from Actuator
+      operationId: health
+      responses:
+        200:
+          $ref: '#/responses/ActuatorHealthResponse'
+        default:
+          $ref: '#/responses/ErrorResponse'
+  /info:
+    get:
+      tags:
+        - Actuator
+      summary: Service Information
+      description: Service Information endpoint from Actuator
+      operationId: info
+      responses:
+        200:
+          $ref: '#/responses/ActuatorInfoResponse'
+        default:
+          $ref: '#/responses/ErrorResponse'
+
+################################################################################
+## Path Responses
+################################################################################
+responses:
+  ##----------------------------------------------------------------------------
+  ## Actuator Responses
+  ##----------------------------------------------------------------------------
+  ActuatorHealthResponse:
+    description: Actuator Health Response
+    schema:
+      $ref: '#/definitions/ActuatorHealth'
+    examples:
+      application/json: |-
+        {
+          "status": "UP"
+        }
+
+  ActuatorInfoResponse:
+    description: Actuator Info
+    schema:
+      $ref: '#/definitions/ActuatorInfo'
+    examples:
+      application/json:
+        title: "Actuator Demo"
+        description: |-
+          This example service only exposes actuator endpoints as an example
+        version: 1.0.0
+        termsOfService: https://github.com/deviantlycan/openapi-generator-templates
+        contact:
+          name: Deviant Lycan
+          email: deviantlycan@antbytes.com
+          url: http://deviantlycan.com
+
+  ##----------------------------------------------------------------------------
+  ## Error Response
+  ##----------------------------------------------------------------------------
+  ErrorResponse:
+    description: Some Error
+    schema:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+    examples:
+      application/json:
+        code: 3
+        message: Something went wrong
+
+################################################################################
+## Resource Definitions
+################################################################################
+definitions:
+  ##----------------------------------------------------------------------------
+  ##-- Actuator Resource Models
+  ##----------------------------------------------------------------------------
+  ActuatorInfo:
+    type: object
+    properties:
+      title:
+        type: string
+      description:
+        type: string
+      version:
+        type: string
+      termsOfService:
+        type: string
+      contact:
+        $ref: '#/definitions/ActuatorInfoContact'
+    example:
+      title: "Actuator Demo"
+      description: |-
+        This example service only exposes actuator endpoints as an example
+      version: 1.0.0
+      termsOfService: https://github.com/deviantlycan/openapi-generator-templates
+      contact:
+        name: Deviant Lycan
+        email: deviantlycan@antbytes.com
+        url: http://deviantlycan.com
+
+  ActuatorInfoContact:
+    type: object
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+      url:
+        type: string
+    example:
+      name: Deviant Lycan
+      email: deviantlycan@antbytes.com
+      url: http://deviantlycan.com
+
+  ActuatorHealth:
+    type: object
+    properties:
+      status:
+        description: status of the service
+        type: string
+        enum:
+          - UP
+          - DOWN
+        default: DOWN
+    example:
+      status: UP
