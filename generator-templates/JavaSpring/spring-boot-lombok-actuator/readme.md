@@ -16,13 +16,21 @@ This template set relies on the additional properties listed in this table
 | actuatorPath | String    | Sets path for Actuator (default: basePath) |
 
 ## Use
+
+### Build the code
 ```
 openapi-generator generate \
 -i openapi.yaml \
 -o ./generated \
 -g spring \
--t ../openapi-generator-templates/generator-templates/JavaSpring/spring-boot-lombok-actuator \
+-t openapi-generator-templates/generator-templates/JavaSpring/spring-boot-lombok-actuator \
 -p useActuator=true,useLombok=true,actuatorPath=/actuator
+```
+
+### Run the application
+```
+cd generated
+mvn spring-boot:run
 ```
 
 ## Other files
