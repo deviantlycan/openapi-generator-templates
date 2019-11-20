@@ -14,4 +14,5 @@ openapi-generator generate \
 ```
 
 ## Current Java Spring Template Sets
-[spring-boot-lombok-actuator](./spring-boot-lombok-actuator/readme.md)
+* [Spring Boot with Lombok and Actuator](./spring-boot-lombok-actuator/readme.md)
+* [Spring Boot Java 11](./java11/readme.md)
