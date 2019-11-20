@@ -1,0 +1,25 @@
+{{#useSpringfox}}
+springfox.documentation.swagger.v2.path=/api-docs
+{{/useSpringfox}}
+server.port={{serverPort}}
+spring.jackson.date-format={{basePackage}}.RFC3339DateFormat
+spring.jackson.serialization.WRITE_DATES_AS_TIMESTAMPS=false
+{{#virtualService}}
+virtual.datasource.driver-class-name=org.hsqldb.jdbcDriver
+virtual.datasource.jdbcurl=jdbc:hsqldb:mem:dataSource
+virtual.datasource.username=sa
+virtual.datasource.password=
+{{/virtualService}}
+
+{{#useActuator}}
+management.endpoints.web.exposure.include=health, info
+# management.endpoints.web.exposure.include=*
+management.endpoints.web.base-path={{#actuatorPath}}{{actuatorPath}}{{/actuatorPath}}{{^actuatorPath}}{{contextPath}}{{/actuatorPath}}
+info.title={{appName}}
+info.description={{{appDescription}}}
+info.version={{appVersion}}
+info.termsOfService={{licenseUrl}}
+info.contact.name={{infoName}}
+info.contact.email={{infoEmail}}
+info.contact.url={{infoUrl}}
+{{/useActuator}}
