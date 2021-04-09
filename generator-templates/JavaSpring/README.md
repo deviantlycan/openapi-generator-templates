@@ -11,6 +11,7 @@ openapi-generator generate \
 	-o ./generated \
 	-g spring \
     -t openapi-generator-templates/generator-templates/JavaSpring/TEMPLATE_SET
+    [--skip-validate-spec]
 ```
 
 ## Current Java Spring Template Sets

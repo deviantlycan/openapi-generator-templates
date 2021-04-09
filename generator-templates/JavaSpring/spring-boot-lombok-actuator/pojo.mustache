@@ -1,6 +1,6 @@
 /**
-* {{#description}}{{.}}{{/description}}{{^description}}{{classname}}{{/description}}
-*/{{#description}}
+ * {{#description}}{{.}}{{/description}}{{^description}}{{classname}}{{/description}}
+ */{{#description}}
     @ApiModel(description = "{{{description}}}"){{/description}}
 {{>generatedAnnotation}}{{#discriminator}}{{>typeInfoAnnotation}}{{/discriminator}}{{>xmlAnnotation}}
 {{#useLombok}}@Getter
@@ -25,6 +25,20 @@ public class {{classname}} {{#parent}}extends {{{parent}}}{{/parent}}{{^parent}}
             {{/mostInnerItems}}
         {{/isContainer}}
     {{/isEnum}}
+        /**
+        {{#description}}
+         * {{{description}}}
+        {{/description}}
+        {{^description}}
+         * {{name}}
+        {{/description}}
+        {{#minimum}}
+         * minimum: {{minimum}}
+        {{/minimum}}
+        {{#maximum}}
+         * maximum: {{maximum}}
+        {{/maximum}}
+         */
     {{#jackson}}
         @JsonProperty("{{baseName}}"){{#withXml}}
         @JacksonXmlProperty({{#isXmlAttribute}}isAttribute = true, {{/isXmlAttribute}}{{#xmlNamespace}}namespace="{{xmlNamespace}}", {{/xmlNamespace}}localName = "{{#xmlName}}{{xmlName}}{{/xmlName}}{{^xmlName}}{{baseName}}{{/xmlName}}"){{/withXml}}
